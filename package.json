@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --respawn --transpile-only src/server.ts",
+    "prod": "node build/src/server.js",
     "build": "tsc",
     "test": "jest --maxWorks=25% --watchAll --detectOpenHandles"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dayjs": "^1.10.7",
     "express": "^4.17.3",
@@ -26,6 +28,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/body-parser": "^1.19.2",
     "@types/config": "^0.0.41",
+    "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
