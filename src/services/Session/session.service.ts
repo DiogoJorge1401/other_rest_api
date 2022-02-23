@@ -1,14 +1,15 @@
 import config from 'config'
 import { get } from 'lodash'
 import { FilterQuery, UpdateQuery } from 'mongoose'
-import { SessionDocument, SessionModel } from '../../models/Session/session.model'
+import { SessionModel } from '../../models/Session/session.model'
+import { SessionDocument } from '../../models/Session/SessionModelInterfaces'
 import { GenerateTokenToCookie } from '../../utils/Cookie'
 import { verifyJwt } from '../../utils/Jwt.utils'
+import { FindUser, ValidatePassword } from '../User/user.service'
 import {
   CreateSessionProps,
   CreateUserSessionProps
 } from './SessionServiceInterfaces'
-import { FindUser, ValidatePassword } from '../User/user.service'
 
 export const CreateSessionIfUserExist = async (
   userData: CreateUserSessionProps,
