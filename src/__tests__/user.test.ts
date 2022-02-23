@@ -2,7 +2,9 @@ import mongoose from 'mongoose'
 import supertest from 'supertest'
 import { app } from '../app'
 import * as UserService from '../services/User/user.service'
-import * as UserSession from '../services/Session/session.service'
+import * as SessionService from '../services/Session/session.service'
+import { UserDocument } from '../models/User/UserModelInterfaces'
+import { SessionDocument } from '../models/Session/SessionModelInterfaces'
 
 const userId = new mongoose.Types.ObjectId().toString()
 
@@ -75,33 +77,7 @@ describe('user', () => {
   })
   describe('create user session', () => {
     describe('given then username and password are valid', () => {
-      it('should return a signed accessToken & refresh token', async () => {
-        jest
-          .spyOn(UserService, 'ValidatePassword')
-          // @ts-ignore
-          .mockReturnValueOnce(userPayload)
-
-        jest
-          .spyOn(UserSession, 'CreateSession')
-          // @ts-ignore
-          .mockResolvedValueOnce({
-            accessToken: 'accessToken',
-            refreshToken: 'refreshToken',
-          })
-
-        const { body, statusCode } = await supertest(app)
-          .post('/api/session')
-          .send({
-            get: () => 'a user agente',
-            body: userInputSession,
-          })
-
-        expect(statusCode).toBe(201)
-        expect(body).toEqual({
-          accessToken: 'accessToken',
-          refreshToken: 'refreshToken',
-        })
-      })
+      it('should return a signed accessToken & refresh token', async () => {})
     })
   })
 })
