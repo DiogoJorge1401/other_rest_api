@@ -44,7 +44,7 @@ export const UpdateProductHandler = async (
     update = req.body
   try {
     await UpdateProduct({ productId, user: userId }, update)
-    return res.status(201).send()
+    return res.status(201).json({ message: 'Product updated' })
   } catch (err) {
     return res.status(err.status).json({ message: err.message })
   }
