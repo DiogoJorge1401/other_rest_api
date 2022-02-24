@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import {
   CreateSession,
   CreateSessionIfUserExist,
-  DeleteSession,
+  InvalidSession,
   FindSessions,
 } from '../../services/Session/session.service'
 import {
@@ -63,7 +63,7 @@ export const ReadUserSessionsHandler = async (req: Request, res: Response) => {
 export const DeleteSessionHandler = async (req: Request, res: Response) => {
   const sessionId = res.locals.user.session
 
-  await DeleteSession({ _id: sessionId }, { valid: false })
+  await InvalidSession({ _id: sessionId }, { valid: false })
 
   return res.send({
     accessToken: null,

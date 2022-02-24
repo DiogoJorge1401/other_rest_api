@@ -42,12 +42,12 @@ export const CreateSession = async ({
   }
 }
 export const FindSessions = async (query: FilterQuery<SessionDocument>) =>
-  SessionModel.find(query).lean()
+  await SessionModel.find(query).lean()
 
-export const DeleteSession = async (
+export const InvalidSession = async (
   query: FilterQuery<SessionDocument>,
   update: UpdateQuery<SessionDocument>
-) => SessionModel.updateOne(query, update)
+) => await SessionModel.updateOne(query, update)
 
 export const GetValidSessionById = async (sessionId: string) => {
   const session = await SessionModel.findById(sessionId)
