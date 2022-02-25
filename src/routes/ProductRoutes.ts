@@ -15,6 +15,36 @@ import {
 
 const productRoutes = Router()
 
+/**
+ * @openapi
+ * '/api/product/{productId}':
+ *  get:
+ *    tags:
+ *      - Product
+ *    summary: Get a single product by the product id
+ *    parameters:
+ *      - name: productId
+ *        in: path
+ *        description: The id of product
+ *        required: true
+ *    responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *              $ref: '#/components/schema/Product'
+ *       404:
+ *         description: Product not found
+ *         content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    default: Product not found
+ */
 productRoutes.get(
   '/product/:productId',
   validate(GetProductSchema),
